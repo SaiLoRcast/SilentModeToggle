@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Silent Mode Toggle</string>
+    <string name="toggle">Переключить режим звонка</string>
+</resources>
