@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean mPhoneIsSilent;
 
+    private static final String TAG = "SilentModeApp";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         checkIfPhoneIsSilent();
         setMuttonClickListener();
 
+        Log.d(TAG, "Это моя запись");
     }
 
     @Override
