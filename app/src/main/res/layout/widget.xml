@@ -6,8 +6,9 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/phone_state"
         android:layout_centerInParent="true"
-        android:src="@drawable/phone_on"
+        android:src="@drawable/phone_off"
         android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

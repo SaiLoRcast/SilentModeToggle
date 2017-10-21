@@ -29,7 +29,7 @@ public class AppWidget extends AppWidgetProvider {
         context.startService(new Intent(context, ToggleService.class));
     }
 
-    public class ToggleService extends IntentService {
+    public static class ToggleService extends IntentService {
 
         public ToggleService() {
             super("AppWidget$ToggleService");
@@ -44,18 +44,18 @@ public class AppWidget extends AppWidgetProvider {
 
         private RemoteViews buildUpdate(Context context) {
             RemoteViews updateViews = new RemoteViews(context.getPackageName(), R.layout.widget);
-            AudioManager audioManager = (AudioManager) context.getSystemService(Activity.AUDIO_SERVICE);
 
+            AudioManager audioManager = (AudioManager) context.getSystemService(Activity.AUDIO_SERVICE);
             if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
-                updateViews.setImageViewResource(R.id.phone_icon, R.drawable.phone_on);
+                updateViews.setImageViewResource(R.id.phone_state, R.drawable.phone_on);
                 audioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
             } else {
-                updateViews.setImageViewResource(R.id.phone_icon, R.drawable.phone_off);
+                updateViews.setImageViewResource(R.id.phone_state, R.drawable.phone_off);
                 audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
             }
             Intent intent = new Intent(this, AppWidget.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-            updateViews.setOnClickPendingIntent(R.id.phone_icon, pendingIntent);
+            updateViews.setOnClickPendingIntent(R.id.phone_state, pendingIntent);
             return updateViews;
         }
     }
